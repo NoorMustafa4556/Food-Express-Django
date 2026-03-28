@@ -8,67 +8,105 @@ from django.dispatch import receiver
 # 1. PROFILE MODEL
 # -----------------------------------------
 class Profile(models.Model):
+    ROLE_CHOICES = [
+        ('Customer', 'Customer'),
+        ('Admin', 'Admin'),
+        ('Rider', 'Rider'),
+    ]
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='profile_pics/', default='default.jpg', blank=True, null=True)
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='Customer')
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
 
 
 # -----------------------------------------
-# 2. COMPLAINT MODEL (FINAL MERGED VERSION)
+# 2. FOOD CATEGORY MODEL
 # -----------------------------------------
-class Complaint(models.Model):
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='category_pics/', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+
+# -----------------------------------------
+# 3. FOOD ITEM MODEL
+# -----------------------------------------
+class FoodItem(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='items')
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    image = models.ImageField(upload_to='food_items/')
+    is_available = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+
+# -----------------------------------------
+# 4. ORDER MODEL
+# -----------------------------------------
+class Order(models.Model):
     STATUS_CHOICES = [
-        ('Sent', 'Sent'),
         ('Pending', 'Pending'),
-        ('In Process', 'In Process'),
-        ('Resolved', 'Resolved'),
+        ('Preparing', 'Preparing'),
+        ('On The Way', 'On The Way'),
+        ('Delivered', 'Delivered'),
         ('Rejected', 'Rejected'),
     ]
 
-    DEPARTMENT_CHOICES = [
-        ('CS', 'Computer Science'),
-        ('IT', 'Information Technology'),
-        ('SE', 'Software Engineering'),
-        ('Management', 'Management'),
-        ('Other', 'Other'),
+    CITY_CHOICES = [
+        ('Bahawalpur', 'Bahawalpur'),
+        ('Multan', 'Multan'),
+        ('Lahore', 'Lahore'),
+        ('Karachi', 'Karachi'),
+        ('Islamabad', 'Islamabad'),
     ]
 
-    CATEGORY_CHOICES = [
-        ('Academic', 'Academic'),
-        ('Hostel', 'Hostel'),
-        ('Transport', 'Transport'),
-        ('Cafeteria', 'Cafeteria'),
-        ('Other', 'Other'),
+    USER_CONFIRMATION_CHOICES = [
+        ('Pending', 'Waiting for User Feedback'),
+        ('Received', 'Yes, Received'),
+        ('Not Received', 'No, Didn\'t Receive'),
     ]
 
-    # Foreign Key to User (Student)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    # Form Fields
-    name = models.CharField(max_length=100)
-    roll_number = models.CharField(max_length=50)
-    department = models.CharField(max_length=50, choices=DEPARTMENT_CHOICES)
-    complaint_category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='Academic')
-    subject = models.CharField(max_length=200)
-    description = models.TextField()
-    attachment = models.ImageField(upload_to='complaints/', blank=True, null=True)
-
-    # Admin Section
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Sent')
-    admin_remark = models.TextField(blank=True, null=True)   # ← New Field Added
-
-    # System Fields
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+    food_item = models.ForeignKey(FoodItem, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
+    total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    city = models.CharField(max_length=50, choices=CITY_CHOICES, default='Bahawalpur')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
+    user_confirmation = models.CharField(max_length=20, choices=USER_CONFIRMATION_CHOICES, default='Pending')
+    rejection_reason = models.TextField(blank=True, null=True)
+    rider = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='deliveries')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.name} - {self.subject}"
+        return f"Order {self.id} by {self.user.username}"
 
 
 # -----------------------------------------
-# 3. AUTO CREATE & SAVE PROFILE SIGNALS
+# 5. FAVORITE MODEL
+# -----------------------------------------
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorites')
+    food_item = models.ForeignKey(FoodItem, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'food_item')
+
+    def __str__(self):
+        return f"{self.user.username} - {self.food_item.name}"
+
+
+# -----------------------------------------
+# 6. AUTO CREATE & SAVE PROFILE SIGNALS
 # -----------------------------------------
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):

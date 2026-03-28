@@ -1,35 +1,32 @@
-# 🎓 University Complaint Management System (UCMS)
+# 🍔 Food Express
 
-**UCMS** is a robust, web-based platform designed to bridge the gap between students and university administration. It streamlines the entire complaint lifecycle—from submission to resolution—ensuring every grievance is heard, tracked, and resolved efficiently.
+**Food Express** is a fast, reliable, and interactive food ordering and delivery management system designed to connect customers, riders, and restaurant administrators.
 
-Built with **Django**, the system features a secure, role-based architecture with a responsive UI, offering a seamless experience for both students and administrators.
+Built with **Django**, the platform provides dedicated dashboards for different roles, ensuring a streamlined process from order placement to final delivery.
 
 ---
 
 ## 🚀 Key Features
 
-- **Role-Based Dashboards** – Dedicated panels for Students and Administrators.
-- **Smart Complaint Tracking** – Real-time status updates (Sent &rarr; Pending &rarr; In Process &rarr; Resolved/Rejected).
-- **Secure Authentication** – Login, Signup, and Password Management with security lockouts.
-- **Complaint Evidence** – Support for image attachments to substantiate complaints.
-- **Admin Power Tools** – Advanced filtering by Department (CS, IT, SE) and Status.
+- **Role-Based Dashboards** – Separate interfaces for Customers, Riders, and Administrators.
+- **Smart Order Tracking** – Real-time status updates (Pending &rarr; Preparing &rarr; On The Way &rarr; Delivered/Rejected).
+- **Two-Way Confirmation** – Customers can confirm if they actually received the order.
+- **Menu Management** – Admins can easily add, update, and manage food categories and items.
+- **Favorite Meals** – Customers can add food items to their favorites list for quick ordering.
+- **Rider Allocation** – Seamlessly assign orders to delivery riders for fulfillment.
 - **Responsive Design** – Optimized for desktops, tablets, and mobile devices.
-- **Automated Profiling** – Instant profile generation for new users.
 
 ---
 
 ### 🔐 Role-Based Access
-- **Students** &rarr; Register complaints, track status, view history, and manage profiles.
-- **Admins** &rarr; Oversee all complaints, update statuses, add remarks, and analyze data.
+- **Customers** &rarr; Browse food menus, add favorites, place orders, track status, and confirm delivery.
+- **Riders** &rarr; View assigned deliveries, update delivery status ("On The Way", "Delivered").
+- **Admins** &rarr; Oversee all operations, manage menu items, process orders, and handle rejections.
 
 ### 🔎 Smart Filtering & Search
-- **Admins** can filter complaints by:
-  - **Status** (Pending, Resolved, etc.)
-  - **Department** (CS, IT, SE, Management)
-
-### 👤 Secure Account Management
-- **Profile Updates:** Name, Email, Profile Picture.
-- **Security:** Password change with a 3-attempt lockout mechanism for enhanced security.
+- Filter orders by:
+  - **Status** (Pending, Preparing, On The Way, etc.)
+  - **Cities** (Bahawalpur, Multan, Lahore, Karachi, Islamabad)
 
 ---
 
@@ -57,6 +54,18 @@ Built with **Django**, the system features a secure, role-based architecture wit
   <img src="myproject/ProjectImages/6.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
   <img src="myproject/ProjectImages/7.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
   <img src="myproject/ProjectImages/8.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/9.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/10.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/11.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/12.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/13.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/14.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/15.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/16.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/17.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/18.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/19.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/ProjectImages/20.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
 </p>
 
 ---
@@ -69,8 +78,8 @@ Built with **Django**, the system features a secure, role-based architecture wit
 
 **1. Clone the repository:**
 ```bash
-git clone https://github.com/NoorMustafa4556/UCMS-University-Complaint-Management-System.git
-cd UCMS-University-Complaint-Management-System
+git clone https://github.com/NoorMustafa4556/Food-Express-Django.git
+cd Food-Express
 ```
 
 **2. Create and activate a virtual environment:**
@@ -89,6 +98,7 @@ pip install -r requirements.txt
 
 **4. Apply migrations:**
 ```bash
+cd myproject
 python manage.py makemigrations
 python manage.py migrate
 ```
@@ -122,6 +132,7 @@ With a strong understanding of **Full-Stack Development**, **UI/UX principles**,
 ---
 
 ## 🌟 Projects I'm Proud Of
+- 🍔 **[Food Express](https://github.com/NoorMustafa4556/Food-Express)** – A dynamic food ordering and delivery system linking customers, riders, and restaurant admins.
 - 🩸 **[Blood Link](https://github.com/NoorMustafa4556/Blood-Link-App-Flutter)** – A modern blood donation app connecting donors and recipients.
 - 🎓 **[UCMS](https://github.com/NoorMustafa4556/UCMS-University-Complaint-Management-System)** – A comprehensive university complaint management system.
 - 🌤 **[Live Weather Check](https://github.com/NoorMustafa4556/Live-Weather-Check-App)** – Real-time weather forecast functionality.

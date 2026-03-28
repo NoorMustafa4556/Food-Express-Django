@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Record - {{ customer.username }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary-color: #ff4757; --dark-color: #2f3542; }
+        body { background: #f4f7f6; font-family: 'Segoe UI', sans-serif; }
+        .sidebar { background: var(--dark-color); min-height: 100vh; color: white; }
+        .nav-link { color: rgba(255,255,255,0.7); transition: 0.3s; }
+        .nav-link:hover { color: white; background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .stat-card { border: none; border-radius: 20px; transition: 0.3s; color: white; }
+        .table-card { border: none; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .profile-header { background: white; border-radius: 20px; padding: 30px; margin-bottom: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 sidebar p-4 sticky-top">
+                <h3 class="fw-bold mb-4 text-danger"><i class="fas fa-utensils me-2"></i>EXPRESS</h3>
+                <nav class="nav flex-column">
+                    <a class="nav-link mb-2" href="{% url 'admin-dashboard' %}"><i class="fas fa-chart-line me-2"></i> Dashboard</a>
+                    <a class="nav-link mb-2" href="{% url 'add-category' %}"><i class="fas fa-folder-plus me-2"></i> Add Category</a>
+                    <a class="nav-link mb-2" href="{% url 'add-food-item' %}"><i class="fas fa-plus-circle me-2"></i> Add Item</a>
+                    <a class="nav-link mt-5 text-danger" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
+                </nav>
+    <div class="container mt-3">
+        {% include 'food/messages.html' %}
+    </div>
+            </div>
+
+            <!-- Main Content -->
+            <main class="col-md-9 col-lg-10 p-5">
+                <div class="d-flex align-items-center mb-4">
+                    <a href="{% url 'admin-dashboard' %}" class="btn btn-light rounded-circle me-3"><i class="fas fa-arrow-left"></i></a>
+                    <h2 class="fw-bold m-0">Customer Record: <span class="text-primary">{{ customer.username }}</span></h2>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row g-4 mb-5">
+                    <div class="col-md-3">
+                        <div class="card stat-card p-4 h-100" style="background: linear-gradient(135deg, #4834d4, #686de0);">
+                            <div class="small opacity-75 mb-1 text-white-50">Total Orders</div>
+                            <h2 class="fw-bold m-0">{{ total_orders }}</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card p-4 h-100" style="background: linear-gradient(135deg, #f0932b, #ffbe76);">
+                            <div class="small opacity-75 mb-1 text-white-50">Pending</div>
+                            <h2 class="fw-bold m-0">{{ pending_orders }}</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card p-4 h-100" style="background: linear-gradient(135deg, #6ab04c, #badc58);">
+                            <div class="small opacity-75 mb-1 text-white-50">Delivered</div>
+                            <h2 class="fw-bold m-0">{{ delivered_orders }}</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card p-4 h-100" style="background: linear-gradient(135deg, #eb4d4b, #ff7979);">
+                            <div class="small opacity-75 mb-1 text-white-50">Rejected</div>
+                            <h2 class="fw-bold m-0">{{ rejected_orders }}</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders History Table -->
+                <div class="card table-card">
+                    <div class="card-header bg-white p-4 border-0">
+                        <h5 class="fw-bold m-0">Order History</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="bg-light">
+                                    <tr>
+                                        <th class="ps-4">ID</th>
+                                        <th>Date</th>
+                                        <th>Item</th>
+                                        <th>Price</th>
+                                        <th>City</th>
+                                        <th>Rider</th>
+                                        <th>Status</th>
+                                        <th class="pe-4">User Feedback</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders %}
+                                    <tr>
+                                        <td class="ps-4 text-muted">#{{ order.id }}</td>
+                                        <td>{{ order.created_at|date:"j M, Y" }}</td>
+                                        <td class="fw-bold">{{ order.food_item.name }}</td>
+                                        <td class="fw-bold text-success">Rs. {{ order.total_price }}</td>
+                                        <td>{{ order.city }}</td>
+                                        <td>
+                                            {% if order.rider %}
+                                                <div class="d-flex align-items-center">
+                                                    <div class="bg-dark text-white rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 30px; height: 30px; font-size: 0.8rem;">
+                                                        {{ order.rider.username|slice:":1"|upper }}
+                                                    </div>
+                                                    <span>{{ order.rider.username }}</span>
+                                                </div>
+                                            {% else %}
+                                                <span class="text-muted small">Not Assigned</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <span class="badge rounded-pill px-3 
+                                                {% if order.status == 'Pending' %}bg-warning text-dark
+                                                {% elif order.status == 'Approved' %}bg-info
+                                                {% elif order.status == 'On The Way' %}bg-primary
+                                                {% elif order.status == 'Delivered' %}bg-success
+                                                {% elif order.status == 'Rejected' %}bg-danger
+                                                {% endif %}">
+                                                {{ order.status }}
+                                            </span>
+                                        </td>
+                                        <td class="pe-4">
+                                            {% if order.user_confirmation == 'Received' %}
+                                                <span class="badge bg-success rounded-pill"><i class="fas fa-check me-1"></i> Received</span>
+                                            {% elif order.user_confirmation == 'Not Received' %}
+                                                <span class="badge bg-danger rounded-pill"><i class="fas fa-times me-1"></i> Not Received</span>
+                                            {% else %}
+                                                <span class="text-muted small">No feedback</span>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="8" class="text-center py-5 text-muted">No past orders found for this customer.</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
