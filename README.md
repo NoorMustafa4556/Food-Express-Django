@@ -79,15 +79,21 @@ Built with **Django**, the platform provides dedicated dashboards for different 
 **1. Clone the repository:**
 ```bash
 git clone https://github.com/NoorMustafa4556/Food-Express-Django.git
+```
+```
 cd Food-Express
 ```
 
 **2. Create and activate a virtual environment:**
 ```bash
 python -m venv env
-# Windows
+```
+## Windows
+```
 .\env\Scripts\activate
-# Mac/Linux
+```
+## Mac/Linux
+```
 source env/bin/activate
 ```
 
@@ -99,8 +105,13 @@ pip install -r requirements.txt
 **4. Apply migrations:**
 ```bash
 cd myproject
+```
+```
 python manage.py makemigrations
+```
+```
 python manage.py migrate
+
 ```
 
 **5. Create a Superuser:**
