@@ -46,26 +46,26 @@ Built with **Django**, the platform provides dedicated dashboards for different 
 ## 📸 App Screenshots
 
 <p align="center">
-  <img src="myproject/ProjectImages/1.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/2.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/3.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/4.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/5.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/6.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/7.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/8.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/9.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/10.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/11.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/12.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/13.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/14.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/15.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/16.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/17.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/18.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/19.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  <img src="myproject/ProjectImages/20.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/1.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/2.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/3.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/4.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/5.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/6.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/7.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/8.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/9.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/10.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/11.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/12.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/13.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/14.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/15.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/16.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/17.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/18.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/19.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
+  <img src="myproject/myapp/static/images/20.png" width="90%" style="margin: 10px; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
 </p>
 
 ---
