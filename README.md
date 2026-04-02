@@ -6,7 +6,6 @@ Built with **Django**, the platform provides dedicated dashboards for different 
 
 ---
 
-
 ## 🚀 Key Features
 
 - **Role-Based Dashboards** – Separate interfaces for Customers, Riders, and Administrators.
