@@ -3,7 +3,6 @@
 **Food Express** is a fast, reliable, and interactive food ordering and delivery management system designed to connect customers, riders, and restaurant administrators.
 
 Built with **Django**, the platform provides dedicated dashboards for different roles, ensuring a streamlined process from order placement to final delivery.
-
 ---
 ## 🚀 Key Features
 
